@@ -5,6 +5,9 @@ import { Platform, MenuController, Nav } from "ionic-angular";
 import { HelloIonicPage } from "../pages/hello-ionic/hello-ionic";
 import { ListPage } from "../pages/list/list";
 import { ReportFormPage } from "../pages/report-form/report-form";
+import { ReportFaultHomePage } from "../pages/report-fault-home/report-fault-home";
+import { EmployeeLoginPage } from "../pages/employee-login/employee-login";
+import { EmployeeReportFaultFormPage } from "../pages/employee-report-fault-form/employee-report-fault-form";
 
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
@@ -17,7 +20,7 @@ export class MyApp {
   nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage = HelloIonicPage;
+  rootPage = ReportFaultHomePage;
   pages: Array<{ title: string; component: any }>;
 
   constructor(
@@ -32,7 +35,13 @@ export class MyApp {
     this.pages = [
       { title: "Hello Ionic", component: HelloIonicPage },
       { title: "My First List", component: ListPage },
-      { title: "Report Form", component: ReportFormPage }
+      { title: "Report Form", component: ReportFormPage },
+      { title: "Report Fault Home", component: ReportFaultHomePage },
+      { title: "Employee Login", component: EmployeeLoginPage },
+      {
+        title: "Employee Report Fault Form",
+        component: EmployeeReportFaultFormPage
+      }
     ];
   }
 

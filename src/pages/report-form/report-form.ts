@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { AlertController } from "ionic-angular";
 import { HelloIonicPage } from "../hello-ionic/hello-ionic";
+import { Camera, CameraOptions } from "@ionic-native/camera";
+import { ReportFaultHomePage } from "../report-fault-home/report-fault-home";
 
 /**
  * Generated class for the ReportFormPage page.
@@ -16,44 +18,38 @@ import { HelloIonicPage } from "../hello-ionic/hello-ionic";
   templateUrl: "report-form.html"
 })
 export class ReportFormPage {
+  faultPhoto: any;
+
   constructor(
+    private camera: Camera,
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController
   ) {}
+  /*
+  takePhoto() {
+    const options: CameraOptions = {
+      quality: 70,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    };
 
-  showPrompt() {
-    const prompt = this.alertCtrl.create({
-      title: "Login",
-      message: "Enter a name for this new album you're so keen on adding",
-      inputs: [
-        {
-          name: "title",
-          placeholder: "Title"
-        }
-      ],
-      buttons: [
-        {
-          text: "Cancel",
-          handler: data => {
-            console.log("Cancel clicked");
-          }
-        },
-        {
-          text: "Save",
-          handler: data => {
-            console.log("Saved clicked");
-          }
-        }
-      ]
-    });
-    prompt.present();
-  }
-
-  itemTapped(event, item) {
-    this.navCtrl.push(HelloIonicPage, {
-      item: item
-    });
+    this.camera.getPicture(options).then(
+      imageData => {
+        // imageData is either a base64 encoded string or a file URI
+        // If it's base64 (DATA_URL):
+        this.faultPhoto = "data:image/jpeg;base64," + imageData;
+      },
+      err => {
+        // Handle error
+        console.log("Camera issue:" + err);
+      }
+    );
+  } 
+*/
+  submit() {
+    this.navCtrl.push(ReportFaultHomePage);
   }
 
   ionViewDidLoad() {
