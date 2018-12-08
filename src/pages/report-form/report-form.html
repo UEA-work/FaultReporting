@@ -8,22 +8,48 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>Hello Report Form</h1>
-  <form action="">
+  <form>
     <div class="list">
-
-
-      <ion-list>
-        <ion-item>
-          <ion-label>Fault Type</ion-label>
-          <ion-select>
-            <ion-option value="station">Station</ion-option>
-            <ion-option value="train">Train</ion-option>
-            <ion-option value="track">Track</ion-option>
-
-          </ion-select>
+      <!--
+        <div id="faultTypeButtons">
+          <button class="buttonStyle" ion-button color="danger" outline>
+            Train
+          </button>
+          <button class="buttonStyle" ion-button color="danger" outline>
+            Station
+          </button>
+        </div>
+      -->
+      <ion-item>
+        <ion-label>Fault Type</ion-label>
+        <select-searchable
+          item-content
+          [ngModelOptions]="{ standalone: true }"
+          [(ngModel)]="selectedFaultType"
+          [items]="faultTypes"
+          itemValueField="id"
+          itemTextField="faultType"
+          [canSearch]="true"
+          (onChange)="selectedFault()"
+        >
+        </select-searchable>
+      </ion-item>
+      <!--
+        <ion-item >
+          <ion-label>Category</ion-label>
+          <select-searchable
+            item-content
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="selectedCategoryType"
+            [items]="faultTypes"
+            itemValueField="id"
+            itemTextField="faultType"
+            [canSearch]="true"
+            (onChange)="selectedFault()"
+          >
+          </select-searchable>
         </ion-item>
-      </ion-list>
+      -->
 
       <ion-list>
         <ion-item>
@@ -32,7 +58,6 @@
             <ion-option value="seat">Seat</ion-option>
             <ion-option value="toilet">Toilet</ion-option>
             <ion-option value="track">Track</ion-option>
-
           </ion-select>
         </ion-item>
       </ion-list>
@@ -62,26 +87,27 @@
         <ion-input type="text"></ion-input>
       </ion-item>
 
-
-
       <!--
-      <button (click)="takePhoto()" ion-button color="blue">Take Photo</button>
-      <img [src]="faultPhoto" *ngIf="faultPhoto">
-        -->
-
-
+        <button (click)="takePhoto()" ion-button color="blue">Take Photo</button>
+        <img [src]="faultPhoto" *ngIf="faultPhoto">
+      -->
 
       <button (click)="submit()" ion-button color="" round>Submit</button>
 
-
-
+      <ion-item>
+        <ion-label>Select user</ion-label>
+        <select-searchable
+          item-content
+          [ngModelOptions]="{ standalone: true }"
+          [(ngModel)]="user"
+          [items]="users"
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          (onChange)="userChanged($event)"
+        >
+        </select-searchable>
+      </ion-item>
     </div>
-
   </form>
-
-
-
-
-
-
 </ion-content>

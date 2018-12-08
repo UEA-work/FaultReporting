@@ -1,16 +1,21 @@
-import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
+import { Component, ViewChild } from "@angular/core";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  ToastController
+} from "ionic-angular";
 import { AlertController } from "ionic-angular";
 import { HelloIonicPage } from "../hello-ionic/hello-ionic";
 import { Camera, CameraOptions } from "@ionic-native/camera";
 import { ReportFaultHomePage } from "../report-fault-home/report-fault-home";
-
-/**
- * Generated class for the ReportFormPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { SelectSearchableComponent } from "ionic-select-searchable";
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  Validators
+} from "@angular/forms";
 
 @IonicPage()
 @Component({
@@ -18,13 +23,94 @@ import { ReportFaultHomePage } from "../report-fault-home/report-fault-home";
   templateUrl: "report-form.html"
 })
 export class ReportFormPage {
+  reportForm: FormGroup;
   faultPhoto: any;
 
+  @ViewChild("myselect") selectComponent: SelectSearchableComponent;
+  selectedFaultType: any = null;
+  faultTypes = [
+    {
+      id: 0,
+      faultType: "Train"
+    },
+    {
+      id: 1,
+      faultType: "Station"
+    }
+  ];
+  categoryForTrain = [
+    {
+      id: 0,
+      categoryOption: "Seat"
+    },
+    {
+      id: 1,
+      categoryOption: "Window"
+    },
+    {
+      id: 2,
+      categoryOption: "Toilet"
+    },
+    {
+      id: 3,
+      categoryOption: "Support handles"
+    },
+    {
+      id: 4,
+      categoryOption: "Door"
+    }
+  ];
+  categoryForStation = [
+    {
+      id: 0,
+      categoryOption: "Vending machine"
+    },
+    {
+      id: 1,
+      categoryOption: "Escalator"
+    },
+    {
+      id: 2,
+      categoryOption: "Toilet"
+    },
+    {
+      id: 3,
+      categoryOption: "Track"
+    },
+    {
+      id: 4,
+      categoryOption: "Ticket Machine"
+    },
+    {
+      id: 5,
+      categoryOption: "Cleaning"
+    }
+  ];
+  users = [
+    {
+      id: 0,
+      name: "Simon Grimm",
+      country: "Germany"
+    },
+    {
+      id: 1,
+      name: "Max Lynch",
+      country: "Wisconsin"
+    },
+    {
+      id: 2,
+      name: "Nic Raboy",
+      country: "California"
+    }
+  ];
+
   constructor(
+    public formBuilder: FormBuilder,
     private camera: Camera,
     public navCtrl: NavController,
     public navParams: NavParams,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    private toastCtrl: ToastController
   ) {}
   /*
   takePhoto() {
@@ -48,6 +134,25 @@ export class ReportFormPage {
     );
   } 
 */
+  selectedFault() {
+    console.log("in Selected Fault function ");
+    console.log(this.selectedFaultType);
+    let ft = this.selectedFaultType.faultType;
+    console.log("Ft value", ft);
+  }
+
+  userChanged(event: { component: SelectSearchableComponent; value: any }) {
+    // User was selected
+  }
+
+  onClose() {
+    let toast = this.toastCtrl.create({
+      message: "Thanks for your selection",
+      duration: 2000
+    });
+    toast.present();
+  }
+
   submit() {
     this.navCtrl.push(ReportFaultHomePage);
   }
