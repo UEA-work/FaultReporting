@@ -137,8 +137,8 @@ export class ReportFormPage {
   selectedFault() {
     console.log("in Selected Fault function ");
     console.log(this.selectedFaultType);
-    let ft = this.selectedFaultType.faultType;
-    console.log("Ft value", ft);
+    this.selectedFaultType = this.selectedFaultType.faultType;
+    console.log("Ft value", this.selectedFaultType);
   }
 
   userChanged(event: { component: SelectSearchableComponent; value: any }) {
