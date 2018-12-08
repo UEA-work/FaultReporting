@@ -112,7 +112,7 @@ export class ReportFormPage {
     public alertCtrl: AlertController,
     private toastCtrl: ToastController
   ) {}
-  /*
+  
   takePhoto() {
     const options: CameraOptions = {
       quality: 70,
@@ -133,7 +133,7 @@ export class ReportFormPage {
       }
     );
   } 
-*/
+
   selectedFault() {
     console.log("in Selected Fault function ");
     console.log(this.selectedFaultType);

@@ -88,10 +88,8 @@
         <ion-input type="text"></ion-input>
       </ion-item>
 
-      <!--
-        <button (click)="takePhoto()" ion-button color="blue">Take Photo</button>
-        <img [src]="faultPhoto" *ngIf="faultPhoto">
-      -->
+      <button (click)="takePhoto()" ion-button color="blue">Take Photo</button>
+      <img src="{{faultPhoto}}" *ngIf="faultPhoto" />
 
       <button (click)="submit()" ion-button color="" round>Submit</button>
 
