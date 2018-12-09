@@ -3,20 +3,17 @@
     <button ion-button menuToggle color="red">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title><span id="greater">greater</span>anglia</ion-title>
+    <ion-title><span id="greater">greater</span>anglia </ion-title>
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-
   <h3>Welcome to your first Ionic app!</h3>
-
+  <h2>{{ "HELLO" | translate }}</h2>
   <button ion-button round>Report By Voice</button>
-  <button (click)="itemTapped($event, item)" ion-button round>Report By Type</button>
+  <button (click)="itemTapped($event, item)" ion-button round>
+    Report By Type
+  </button>
 
-  <p>
-    <button ion-button color="primary" menuToggle>Toggle Menu</button>
-  </p>
-
+  <p><button ion-button color="primary" menuToggle>Toggle Menu</button></p>
 </ion-content>

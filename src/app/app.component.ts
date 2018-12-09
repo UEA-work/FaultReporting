@@ -11,6 +11,7 @@ import { EmployeeReportFaultFormPage } from "../pages/employee-report-fault-form
 
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   templateUrl: "app.html"
@@ -27,7 +28,8 @@ export class MyApp {
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    public translate: TranslateService
   ) {
     this.initializeApp();
 
@@ -46,9 +48,12 @@ export class MyApp {
   }
 
   initializeApp() {
+    this.translate.setDefaultLang("en");
+
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });

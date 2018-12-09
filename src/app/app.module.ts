@@ -16,6 +16,14 @@ import { SplashScreen } from "@ionic-native/splash-screen";
 import { Camera } from "@ionic-native/camera";
 import { SelectSearchableModule } from "ionic-select-searchable";
 
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { HttpClientModule, HttpClient } from "@angular/common/http";
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
+}
+
 @NgModule({
   declarations: [
     MyApp,
@@ -27,7 +35,20 @@ import { SelectSearchableModule } from "ionic-select-searchable";
     EmployeeLoginPage,
     EmployeeReportFaultFormPage
   ],
-  imports: [BrowserModule, IonicModule.forRoot(MyApp), SelectSearchableModule],
+  imports: [
+    BrowserModule,
+    // IonicModule.forRoot(MyApp),
+    SelectSearchableModule,
+    HttpClientModule,
+    IonicModule.forRoot(MyApp),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
+  ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
