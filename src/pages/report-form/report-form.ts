@@ -5,7 +5,7 @@ import {
   NavParams,
   ToastController
 } from "ionic-angular";
-import { AlertController } from "ionic-angular";
+
 import { HelloIonicPage } from "../hello-ionic/hello-ionic";
 import { Camera, CameraOptions } from "@ionic-native/camera";
 import { ReportFaultHomePage } from "../report-fault-home/report-fault-home";
@@ -218,9 +218,7 @@ export class ReportFormPage {
     public formBuilder: FormBuilder,
     private camera: Camera,
     public navCtrl: NavController,
-    public navParams: NavParams,
-    public alertCtrl: AlertController,
-    private toastCtrl: ToastController
+    public navParams: NavParams
   ) {}
 
   takePhoto() {
