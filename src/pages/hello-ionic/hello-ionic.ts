@@ -13,9 +13,7 @@ export class HelloIonicPage {
     public navParams: NavParams,
     public alertCtrl: AlertController
   ) {}
-  itemTapped(event, item) {
-    this.navCtrl.push(ReportFormPage, {
-      item: item
-    });
+  reportByType() {
+    this.navCtrl.push(ReportFormPage);
   }
 }

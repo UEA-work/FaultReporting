@@ -8,18 +8,8 @@
 </ion-header>
 
 <ion-content padding>
-  <form>
+  <form [(ngModel)]="faultForm" [ngModelOptions]="{ standalone: true }">
     <div class="list">
-      <!--
-        <div id="faultTypeButtons">
-          <button class="buttonStyle" ion-button color="danger" outline>
-            Train
-          </button>
-          <button class="buttonStyle" ion-button color="danger" outline>
-            Station
-          </button>
-        </div>
-      -->
       <ion-item>
         <ion-label>Fault Type</ion-label>
         <select-searchable
@@ -184,6 +174,8 @@
       <img src="{{faultPhoto}}" *ngIf="faultPhoto" />
 
       <button (click)="submit()" ion-button color="" round>Submit</button>
+      <button (click)="reset()" ion-button color="" round>Clear</button>
     </div>
   </form>
+  <button (click)="cancel()" ion-button color="" round>Cancel</button>
 </ion-content>

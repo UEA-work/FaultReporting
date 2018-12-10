@@ -36,14 +36,11 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       //{ title: "Hello Ionic", component: HelloIonicPage },
+      { title: "Home", component: ReportFaultHomePage },
       { title: "Reported Faults", component: ListPage },
-      { title: "Report Form", component: ReportFormPage },
-      { title: "Report Fault Home", component: ReportFaultHomePage },
-      { title: "Employee Login", component: EmployeeLoginPage },
-      {
-        title: "Employee Report Fault Form",
-        component: EmployeeReportFaultFormPage
-      }
+      { title: "Report Fault", component: HelloIonicPage },
+      { title: "Settings", component: HelloIonicPage },
+      { title: "Sign Out", component: ReportFaultHomePage }
     ];
   }
 

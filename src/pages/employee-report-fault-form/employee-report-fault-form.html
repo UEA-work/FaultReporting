@@ -1,25 +1,15 @@
-<!--
-  Generated template for the EmployeeReportFaultFormPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>EmployeeReportFaultForm</ion-title>
+  <ion-navbar hideBackButton="true">
+    <button ion-button menuToggle color="red">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title><span id="greater">greater</span>anglia</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-
-
   <form action="">
     <div class="list">
-
-
       <ion-list>
         <ion-item>
           <ion-label>Fault Type</ion-label>
@@ -27,7 +17,6 @@
             <ion-option value="station">Station</ion-option>
             <ion-option value="train">Train</ion-option>
             <ion-option value="track">Track</ion-option>
-
           </ion-select>
         </ion-item>
       </ion-list>
@@ -39,7 +28,6 @@
             <ion-option value="seat">Seat</ion-option>
             <ion-option value="toilet">Toilet</ion-option>
             <ion-option value="track">Track</ion-option>
-
           </ion-select>
         </ion-item>
       </ion-list>
@@ -64,7 +52,6 @@
         <ion-textarea></ion-textarea>
       </ion-item>
 
-
       <ion-item>
         <ion-label>Get notification about this report?</ion-label>
         <ion-checkbox color="dark"></ion-checkbox>
@@ -75,21 +62,12 @@
         <ion-input type="text"></ion-input>
       </ion-item>
 
-
-
       <!--
-          <button (click)="takePhoto()" ion-button color="blue">Take Photo</button>
-          <img [src]="faultPhoto" *ngIf="faultPhoto">
-            -->
-
-
+        <button (click)="takePhoto()" ion-button color="blue">Take Photo</button>
+        <img [src]="faultPhoto" *ngIf="faultPhoto">
+      -->
 
       <button (click)="submit()" ion-button color="" round>Submit</button>
-
-
-
     </div>
-
   </form>
-
 </ion-content>

@@ -1,5 +1,4 @@
 <ion-menu [content]="content">
-
   <ion-header>
     <ion-toolbar>
       <ion-title><span id="greater">greater</span>anglia</ion-title>
@@ -9,11 +8,10 @@
   <ion-content>
     <ion-list>
       <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
+        {{ p.title }}
       </button>
     </ion-list>
   </ion-content>
-
 </ion-menu>
 
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="true"></ion-nav>

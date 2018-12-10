@@ -30,6 +30,7 @@ export class ReportFormPage {
   coachType: any = null;
   selectedCommonFault: any = null;
   commonFault: any = null;
+  faultForm: any = null;
 
   @ViewChild("myselect") selectComponent: SelectSearchableComponent;
   selectedFaultType: any = null;
@@ -271,6 +272,12 @@ export class ReportFormPage {
 
   submit() {
     this.navCtrl.push(ReportFaultHomePage);
+  }
+  cancel() {
+    this.navCtrl.push(ReportFaultHomePage);
+  }
+  reset() {
+    this.navCtrl.push(ReportFormPage);
   }
 
   ionViewDidLoad() {
