@@ -170,12 +170,19 @@
         <ion-input type="text"></ion-input>
       </ion-item>
 
-      <button (click)="takePhoto()" ion-button color="blue">Take Photo</button>
-      <img src="{{faultPhoto}}" *ngIf="faultPhoto" />
+      <ion-item>
+        <ion-label>Upload Photo:</ion-label>
 
-      <button (click)="submit()" ion-button color="" round>Submit</button>
-      <button (click)="reset()" ion-button color="" round>Clear</button>
+        <ion-icon name="attach" item-right></ion-icon>
+
+        <ion-icon name="camera" (click)="takePhoto()" item-right></ion-icon>
+
+        <img src="{{faultPhoto}}" *ngIf="faultPhoto" />
+      </ion-item>
+
+      <button (click)="submit()" ion-button color="secondary">Submit</button>
+      <button (click)="reset()" ion-button color="secondary">Clear</button>
     </div>
   </form>
-  <button (click)="cancel()" ion-button color="" round>Cancel</button>
+  <button (click)="cancel()" ion-button color="secondary">Cancel</button>
 </ion-content>

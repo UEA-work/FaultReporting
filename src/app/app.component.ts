@@ -22,7 +22,8 @@ export class MyApp {
 
   // make HelloIonicPage the root (or first) page
   rootPage = ReportFaultHomePage;
-  pages: Array<{ title: string; component: any }>;
+  pages: Array<{ title: string; component: any; icon: String }>;
+  icons: string[];
 
   constructor(
     public platform: Platform,
@@ -36,11 +37,11 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       //{ title: "Hello Ionic", component: HelloIonicPage },
-      { title: "Home", component: ReportFaultHomePage },
-      { title: "Reported Faults", component: ListPage },
-      { title: "Report Fault", component: HelloIonicPage },
-      { title: "Settings", component: HelloIonicPage },
-      { title: "Sign Out", component: ReportFaultHomePage }
+      { title: "Home", component: ReportFaultHomePage, icon: "home" },
+      { title: "Reported Faults", component: ListPage, icon: "albums" },
+      { title: "Report Fault", component: HelloIonicPage, icon: "create" },
+      { title: "Settings", component: HelloIonicPage, icon: "settings" },
+      { title: "Sign Out", component: ReportFaultHomePage, icon: "log-out" }
     ];
   }
 
