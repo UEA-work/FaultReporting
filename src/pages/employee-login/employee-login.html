@@ -12,13 +12,13 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="credentialsForm" (submit)="employeeLogin()">
+  <form
+    [formGroup]="credentialsForm"
+    (submit)="employeeLogin(credentialsForm.value)"
+  >
     <ion-item>
       <ion-label floating>Email</ion-label>
-      <ion-input
-        [formControl]="credentialsForm.controls['email']"
-        type="email"
-      ></ion-input>
+      <ion-input formControlName="email" type="text"></ion-input>
     </ion-item>
 
     <div
@@ -34,7 +34,7 @@
     <ion-item>
       <ion-label floating>Password</ion-label>
       <ion-input
-        [formControl]="credentialsForm.controls['password']"
+        formControlName="password"
         type="password"
         value=""
       ></ion-input>

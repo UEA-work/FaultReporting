@@ -21,9 +21,9 @@ import {
   templateUrl: "employee-login.html"
 })
 export class EmployeeLoginPage {
+  email: AbstractControl;
+  password: AbstractControl;
   credentialsForm: FormGroup;
-  email: any;
-  password: any;
 
   constructor(
     public navCtrl: NavController,
@@ -34,13 +34,11 @@ export class EmployeeLoginPage {
       email: ["", [Validators.pattern(".+@.+..+"), Validators.required]],
       password: ["", [Validators.required, Validators.minLength(8)]]
     });
-    this.email = this.credentialsForm.controls["email"];
-    this.password = this.credentialsForm.controls["password"];
   }
 
-  employeeLogin() {
+  employeeLogin(formData: any): void {
     if (this.credentialsForm.valid) {
-      console.log(" Email Id:", +this.email);
+      console.log(" Email Id:", +formData.email.value);
       console.log("employeeLogin() => inside IF statement ");
     }
     console.log("in employeeLogin() ");
