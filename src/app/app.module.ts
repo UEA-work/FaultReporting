@@ -2,6 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, ErrorHandler } from "@angular/core";
 import { IonicApp, IonicModule, IonicErrorHandler } from "ionic-angular";
 import { MyApp } from "./app.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { HelloIonicPage } from "../pages/hello-ionic/hello-ionic";
 import { ItemDetailsPage } from "../pages/item-details/item-details";
@@ -38,6 +39,8 @@ export function createTranslateLoader(http: HttpClient) {
     EmployeeReportFaultFormPage
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     // IonicModule.forRoot(MyApp),
     SelectSearchableModule,
