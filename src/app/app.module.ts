@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { HelloIonicPage } from "../pages/hello-ionic/hello-ionic";
 import { ItemDetailsPage } from "../pages/item-details/item-details";
-import { ListPage } from "../pages/list/list";
+
 import { ReportFormPage } from "../pages/report-form/report-form";
 import { ReportFaultHomePage } from "../pages/report-fault-home/report-fault-home";
 import { EmployeeLoginPage } from "../pages/employee-login/employee-login";
@@ -34,7 +34,6 @@ export function createTranslateLoader(http: HttpClient) {
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage,
     ReportFormPage,
     ReportFaultHomePage,
     EmployeeLoginPage,
@@ -46,7 +45,6 @@ export function createTranslateLoader(http: HttpClient) {
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
-    // IonicModule.forRoot(MyApp),
     SelectSearchableModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
@@ -64,7 +62,6 @@ export function createTranslateLoader(http: HttpClient) {
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage,
     ReportFormPage,
     ReportFaultHomePage,
     EmployeeLoginPage,

@@ -3,7 +3,7 @@ import { Component, ViewChild } from "@angular/core";
 import { Platform, MenuController, Nav } from "ionic-angular";
 
 import { HelloIonicPage } from "../pages/hello-ionic/hello-ionic";
-import { ListPage } from "../pages/list/list";
+
 import { ReportFormPage } from "../pages/report-form/report-form";
 import { ReportFaultHomePage } from "../pages/report-fault-home/report-fault-home";
 import { EmployeeLoginPage } from "../pages/employee-login/employee-login";
@@ -40,8 +40,11 @@ export class MyApp {
     this.pages = [
       //{ title: "Hello Ionic", component: HelloIonicPage },
       { title: "Home", component: ReportFaultHomePage, icon: "home" },
-      { title: "Reported Faults", component: ListPage, icon: "albums" },
-      { title: "Reported Faults new", component: ReportedFaultsPage, icon: "albums" },
+      {
+        title: "Reported Faults",
+        component: ReportedFaultsPage,
+        icon: "albums"
+      },
       { title: "Report Fault", component: HelloIonicPage, icon: "create" },
       { title: "Settings", component: SettingsPage, icon: "settings" },
       { title: "Sign Out", component: ReportFaultHomePage, icon: "log-out" }
