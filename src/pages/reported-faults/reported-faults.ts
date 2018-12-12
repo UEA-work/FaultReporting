@@ -15,67 +15,93 @@ import { ItemDetailsPage } from "../item-details/item-details";
   templateUrl: "reported-faults.html"
 })
 export class ReportedFaultsPage {
-  icons: string[];
-  items: Array<{ title: string; note: string; icon: string }>;
   reportedFaultsList: Array<{
     id: number;
+    faultType: String;
+    category: String;
+    commonFault: String;
+    journeyInfo: String;
+    journeyTimeAndDate: any;
     coachNumber: number;
     coachType: String;
+    seatNumber: number;
+    status: String;
   }>;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.icons = [
-      "flask",
-      "wifi",
-      "beer",
-      "football",
-      "basketball",
-      "paper-plane",
-      "american-football",
-      "boat",
-      "bluetooth",
-      "build"
-    ];
-
     this.reportedFaultsList = [
       {
         id: 0,
+        faultType: "Train",
+        category: "Seat",
+        commonFault: "Broken Seat",
+        journeyInfo: "Norwich to Ipswich",
+        journeyTimeAndDate: "2018-12-12T12:29:00Z",
         coachNumber: 57416,
-        coachType: "rural"
+        coachType: "Urban",
+        seatNumber: 23,
+        status: "Reported"
       },
       {
         id: 1,
-        coachNumber: 82143,
-        coachType: "urban"
+        faultType: "Train",
+        category: "Seat",
+        commonFault: "Broken Seat",
+        journeyInfo: "Norwich to Ipswich",
+        journeyTimeAndDate: "2018-12-12T12:29:00Z",
+        coachNumber: 57416,
+        coachType: "Urban",
+        seatNumber: 23,
+        status: "Scheduled"
       },
       {
         id: 2,
-        coachNumber: 12056,
-        coachType: "urban"
+        faultType: "Train",
+        category: "Seat",
+        commonFault: "Broken Seat",
+        journeyInfo: "Norwich to Ipswich",
+        journeyTimeAndDate: "2018-12-12T12:29:00Z",
+        coachNumber: 57416,
+        coachType: "Urban",
+        seatNumber: 23,
+        status: "Reported"
       },
       {
         id: 3,
-        coachNumber: 74456,
-        coachType: "urban"
+        faultType: "Train",
+        category: "Seat",
+        commonFault: "Broken Seat",
+        journeyInfo: "Norwich to Ipswich",
+        journeyTimeAndDate: "2018-12-12T12:29:00Z",
+        coachNumber: 57416,
+        coachType: "Urban",
+        seatNumber: 23,
+        status: "Done"
       },
       {
         id: 4,
-        coachNumber: 12345,
-        coachType: "rural"
+        faultType: "Train",
+        category: "Seat",
+        commonFault: "Broken Seat",
+        journeyInfo: "Norwich to Ipswich",
+        journeyTimeAndDate: "2018-12-12T12:29:00Z",
+        coachNumber: 57416,
+        coachType: "Urban",
+        seatNumber: 23,
+        status: "Reported"
       },
       {
         id: 5,
-        coachNumber: 54321,
-        coachType: "rural"
+        faultType: "Train",
+        category: "Seat",
+        commonFault: "Broken Seat",
+        journeyInfo: "Norwich to Ipswich",
+        journeyTimeAndDate: "2018-12-12T12:29:00Z",
+        coachNumber: 57416,
+        coachType: "Urban",
+        seatNumber: 23,
+        status: "Reported"
       }
     ];
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: "Item " + i,
-        note: "This is item #" + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
   }
 
   ionViewDidLoad() {

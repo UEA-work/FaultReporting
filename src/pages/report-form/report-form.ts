@@ -31,6 +31,7 @@ export class ReportFormPage {
   selectedCommonFault: any = null;
   commonFault: any = null;
   faultForm: any = null;
+  myDate: any = null;
 
   @ViewChild("myselect") selectComponent: SelectSearchableComponent;
   selectedFaultType: any = null;
@@ -269,6 +270,8 @@ export class ReportFormPage {
   }
 
   submit() {
+    this.myDate = this.myDate;
+    console.log("myDate" + this.myDate);
     this.navCtrl.push(ReportFaultHomePage);
   }
   cancel() {

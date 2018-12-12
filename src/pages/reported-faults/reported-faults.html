@@ -20,8 +20,10 @@
       *ngFor="let item of reportedFaultsList"
       (click)="itemTapped($event, item)"
     >
-      {{ item.coachNumber }}
-      <div class="item-note" item-right>{{ item.coachType }}</div>
+      <ion-label>Fault Type: {{ item.faultType }}</ion-label>
+      <ion-label>Reported Date: {{ item.journeyTimeAndDate }}</ion-label>
+
+      <div class="item-note" item-right>Status:{{ item.status }}</div>
     </button>
   </ion-list>
 </ion-content>
