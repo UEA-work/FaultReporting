@@ -7,182 +7,184 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <form [(ngModel)]="faultForm" [ngModelOptions]="{ standalone: true }">
-    <div class="list">
-      <ion-item>
-        <ion-label>Fault Type</ion-label>
-        <select-searchable
-          item-content
-          [ngModelOptions]="{ standalone: true }"
-          [(ngModel)]="selectedFaultType"
-          [items]="faultTypes"
-          itemValueField="id"
-          itemTextField="faultType"
-          [canSearch]="true"
-          (onChange)="selectedFault()"
-        >
-        </select-searchable>
-      </ion-item>
+<ion-content>
+  <div id="divStyle">
+    <form [(ngModel)]="faultForm" [ngModelOptions]="{ standalone: true }">
+      <div class="list">
+        <ion-item>
+          <ion-label>Fault Type</ion-label>
+          <select-searchable
+            item-content
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="selectedFaultType"
+            [items]="faultTypes"
+            itemValueField="id"
+            itemTextField="faultType"
+            [canSearch]="true"
+            (onChange)="selectedFault()"
+          >
+          </select-searchable>
+        </ion-item>
 
-      <!-- ///////////// FAULT TYPE TRAIN/ ////////////// -->
+        <!-- ///////////// FAULT TYPE TRAIN/ ////////////// -->
 
-      <ion-item *ngIf="selectedFaultType == 'Train'">
-        <ion-label>Category</ion-label>
-        <select-searchable
-          item-content
-          [ngModelOptions]="{ standalone: true }"
-          [(ngModel)]="selectedCategoryType"
-          [items]="categoryForTrain"
-          itemValueField="id"
-          itemTextField="categoryOption"
-          [canSearch]="true"
-          (onChange)="selectedCategoryTrain()"
-        >
-        </select-searchable>
-      </ion-item>
-      <!-- /////////////Common Faults /////////////// -->
-      <ion-item *ngIf="selectedCategoryType == 'Seat'">
-        <ion-label>Common Faults</ion-label>
-        <select-searchable
-          item-content
-          [ngModelOptions]="{ standalone: true }"
-          [(ngModel)]="selectedCommonFault"
-          [items]="seatCommonFaults"
-          itemValueField="id"
-          itemTextField="commonFaultOption"
-          [canSearch]="true"
-          (onChange)="checkCommonFault()"
-        >
-        </select-searchable>
-      </ion-item>
+        <ion-item *ngIf="selectedFaultType == 'Train'">
+          <ion-label>Category</ion-label>
+          <select-searchable
+            item-content
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="selectedCategoryType"
+            [items]="categoryForTrain"
+            itemValueField="id"
+            itemTextField="categoryOption"
+            [canSearch]="true"
+            (onChange)="selectedCategoryTrain()"
+          >
+          </select-searchable>
+        </ion-item>
+        <!-- /////////////Common Faults /////////////// -->
+        <ion-item *ngIf="selectedCategoryType == 'Seat'">
+          <ion-label>Common Faults</ion-label>
+          <select-searchable
+            item-content
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="selectedCommonFault"
+            [items]="seatCommonFaults"
+            itemValueField="id"
+            itemTextField="commonFaultOption"
+            [canSearch]="true"
+            (onChange)="checkCommonFault()"
+          >
+          </select-searchable>
+        </ion-item>
 
-      <ion-item *ngIf="selectedCategoryType == 'Window'">
-        <ion-label>Common Faults</ion-label>
-        <select-searchable
-          item-content
-          [ngModelOptions]="{ standalone: true }"
-          [(ngModel)]="selectedCommonFault"
-          [items]="windowCommonFaults"
-          itemValueField="id"
-          itemTextField="commonFaultOption"
-          [canSearch]="true"
-          (onChange)="checkCommonFault()"
-        >
-        </select-searchable>
-      </ion-item>
+        <ion-item *ngIf="selectedCategoryType == 'Window'">
+          <ion-label>Common Faults</ion-label>
+          <select-searchable
+            item-content
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="selectedCommonFault"
+            [items]="windowCommonFaults"
+            itemValueField="id"
+            itemTextField="commonFaultOption"
+            [canSearch]="true"
+            (onChange)="checkCommonFault()"
+          >
+          </select-searchable>
+        </ion-item>
 
-      <ion-item *ngIf="selectedCategoryType == 'Toilet'">
-        <ion-label>Common Faults</ion-label>
-        <select-searchable
-          item-content
-          [ngModelOptions]="{ standalone: true }"
-          [(ngModel)]="selectedCommonFault"
-          [items]="toiletCommonFaults"
-          itemValueField="id"
-          itemTextField="commonFaultOption"
-          [canSearch]="true"
-          (onChange)="checkCommonFault()"
-        >
-        </select-searchable>
-      </ion-item>
-      <!--
-        //////////////////Description If selected common fault is "other"////////////////
-      -->
+        <ion-item *ngIf="selectedCategoryType == 'Toilet'">
+          <ion-label>Common Faults</ion-label>
+          <select-searchable
+            item-content
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="selectedCommonFault"
+            [items]="toiletCommonFaults"
+            itemValueField="id"
+            itemTextField="commonFaultOption"
+            [canSearch]="true"
+            (onChange)="checkCommonFault()"
+          >
+          </select-searchable>
+        </ion-item>
+        <!--
+          //////////////////Description If selected common fault is "other"////////////////
+        -->
 
-      <ion-item *ngIf="commonFault == 'Other'">
-        <ion-label>Description:</ion-label>
-        <ion-textarea></ion-textarea>
-      </ion-item>
+        <ion-item *ngIf="commonFault == 'Other'">
+          <ion-label>Description:</ion-label>
+          <ion-textarea></ion-textarea>
+        </ion-item>
 
-      <!-- /////////////////Fault Type Station /////////////////// -->
+        <!-- /////////////////Fault Type Station /////////////////// -->
 
-      <ion-item *ngIf="selectedFaultType == 'Station'">
-        <ion-label>Category</ion-label>
-        <select-searchable
-          item-content
-          [ngModelOptions]="{ standalone: true }"
-          [(ngModel)]="selectedCategoryType"
-          [items]="categoryForStation"
-          itemValueField="id"
-          itemTextField="categoryOption"
-          [canSearch]="true"
-        >
-        </select-searchable>
-      </ion-item>
+        <ion-item *ngIf="selectedFaultType == 'Station'">
+          <ion-label>Category</ion-label>
+          <select-searchable
+            item-content
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="selectedCategoryType"
+            [items]="categoryForStation"
+            itemValueField="id"
+            itemTextField="categoryOption"
+            [canSearch]="true"
+          >
+          </select-searchable>
+        </ion-item>
 
-      <!-- /////////////Journey Information////////////// -->
-      <ion-item>
-        <ion-label>Journey Info.</ion-label>
-        <select-searchable
-          item-content
-          [ngModelOptions]="{ standalone: true }"
-          [(ngModel)]="journeyInfo"
-          [items]="journeyInfoList"
-          itemValueField="id"
-          itemTextField="journeyInfoOption"
-          [canSearch]="true"
-        >
-        </select-searchable>
-      </ion-item>
+        <!-- /////////////Journey Information////////////// -->
+        <ion-item>
+          <ion-label>Journey Info.</ion-label>
+          <select-searchable
+            item-content
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="journeyInfo"
+            [items]="journeyInfoList"
+            itemValueField="id"
+            itemTextField="journeyInfoOption"
+            [canSearch]="true"
+          >
+          </select-searchable>
+        </ion-item>
 
-      <!-- /////////////Journey Time and Date /////////////// -->
+        <!-- /////////////Journey Time and Date /////////////// -->
 
-      <ion-item>
-        <ion-label>Journey Time & Date</ion-label>
-        <ion-datetime
-          [ngModelOptions]="{ standalone: true }"
-          displayFormat="MMM DD, YYYY HH:mm"
-          [(ngModel)]="myDate"
-        ></ion-datetime>
-      </ion-item>
+        <ion-item>
+          <ion-label>Journey Time & Date</ion-label>
+          <ion-datetime
+            [ngModelOptions]="{ standalone: true }"
+            displayFormat="MMM DD, YYYY HH:mm"
+            [(ngModel)]="myDate"
+          ></ion-datetime>
+        </ion-item>
 
-      <!-- ////////////Coach Information ///////////// -->
+        <!-- ////////////Coach Information ///////////// -->
 
-      <ion-item>
-        <ion-label>Coach Info.</ion-label>
-        <select-searchable
-          item-content
-          [ngModelOptions]="{ standalone: true }"
-          [(ngModel)]="coachInfo"
-          [items]="coachInfoList"
-          itemValueField="id"
-          itemTextField="coachNumber"
-          [canSearch]="true"
-          (onChange)="selectedCoach()"
-        >
-        </select-searchable>
-      </ion-item>
+        <ion-item>
+          <ion-label>Coach Info.</ion-label>
+          <select-searchable
+            item-content
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="coachInfo"
+            [items]="coachInfoList"
+            itemValueField="id"
+            itemTextField="coachNumber"
+            [canSearch]="true"
+            (onChange)="selectedCoach()"
+          >
+          </select-searchable>
+        </ion-item>
 
-      <!-- ////////////Seat number if coach type is urban//////////// -->
-      <ion-item *ngIf="coachType == 'urban'">
-        <ion-label>Seat No.</ion-label>
-        <ion-input type="number"></ion-input>
-      </ion-item>
+        <!-- ////////////Seat number if coach type is urban//////////// -->
+        <ion-item *ngIf="coachType == 'urban'">
+          <ion-label>Seat No.</ion-label>
+          <ion-input type="number"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label>Get notification about this fault?</ion-label>
-        <ion-checkbox color="dark"></ion-checkbox>
-      </ion-item>
+        <ion-item>
+          <ion-label>Get notification about this fault?</ion-label>
+          <ion-checkbox color="dark"></ion-checkbox>
+        </ion-item>
 
-      <ion-item>
-        <ion-label>Email:</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label>Email:</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label>Upload Photo:</ion-label>
+        <ion-item>
+          <ion-label>Upload Photo:</ion-label>
 
-        <ion-icon name="attach" item-right></ion-icon>
+          <ion-icon name="attach" item-right></ion-icon>
 
-        <ion-icon name="camera" (click)="takePhoto()" item-right></ion-icon>
+          <ion-icon name="camera" (click)="takePhoto()" item-right></ion-icon>
 
-        <img src="{{faultPhoto}}" *ngIf="faultPhoto" />
-      </ion-item>
+          <img src="{{faultPhoto}}" *ngIf="faultPhoto" />
+        </ion-item>
 
-      <button (click)="submit()" ion-button color="secondary">Submit</button>
-      <button (click)="reset()" ion-button color="secondary">Clear</button>
-    </div>
-  </form>
-  <button (click)="cancel()" ion-button color="secondary">Cancel</button>
+        <button (click)="submit()" ion-button color="danger">Submit</button>
+        <button (click)="reset()" ion-button color="danger">Clear</button>
+        <button (click)="cancel()" ion-button color="danger">Cancel</button>
+      </div>
+    </form>
+  </div>
 </ion-content>

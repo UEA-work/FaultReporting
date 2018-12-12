@@ -5,11 +5,16 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Welcome to your first Ionic app!</h3>
-  <h2>{{ "HELLO" | translate }}</h2>
-  <button ion-button color="secondary">Report By Voice</button>
-  <button (click)="reportByType()" ion-button color="secondary">
-    Report By Type
-  </button>
+<ion-content>
+  <div id="mainDiv">
+    <h3>Welcome to your first Ionic app!</h3>
+    <h2>{{ "HELLO" | translate }}</h2>
+    <button ion-button color="danger">
+      <ion-icon name="mic" item-left> Report By Voice </ion-icon>
+    </button>
+    <br />
+    <button (click)="reportByType()" ion-button color="danger">
+      <ion-icon name="create" item-left> Report By Type</ion-icon>
+    </button>
+  </div>
 </ion-content>
