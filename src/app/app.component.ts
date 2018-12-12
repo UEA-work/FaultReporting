@@ -9,6 +9,7 @@ import { ReportFaultHomePage } from "../pages/report-fault-home/report-fault-hom
 import { EmployeeLoginPage } from "../pages/employee-login/employee-login";
 import { EmployeeReportFaultFormPage } from "../pages/employee-report-fault-form/employee-report-fault-form";
 import { SettingsPage } from "../pages/settings/settings";
+import { ReportedFaultsPage } from "../pages/reported-faults/reported-faults";
 
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
@@ -40,6 +41,7 @@ export class MyApp {
       //{ title: "Hello Ionic", component: HelloIonicPage },
       { title: "Home", component: ReportFaultHomePage, icon: "home" },
       { title: "Reported Faults", component: ListPage, icon: "albums" },
+      { title: "Reported Faults new", component: ReportedFaultsPage, icon: "albums" },
       { title: "Report Fault", component: HelloIonicPage, icon: "create" },
       { title: "Settings", component: SettingsPage, icon: "settings" },
       { title: "Sign Out", component: ReportFaultHomePage, icon: "log-out" }

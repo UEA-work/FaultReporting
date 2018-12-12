@@ -12,6 +12,7 @@ import { ReportFaultHomePage } from "../pages/report-fault-home/report-fault-hom
 import { EmployeeLoginPage } from "../pages/employee-login/employee-login";
 import { EmployeeReportFaultFormPage } from "../pages/employee-report-fault-form/employee-report-fault-form";
 import { SettingsPage } from "../pages/settings/settings";
+import { ReportedFaultsPage } from "../pages/reported-faults/reported-faults";
 
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
@@ -38,7 +39,8 @@ export function createTranslateLoader(http: HttpClient) {
     ReportFaultHomePage,
     EmployeeLoginPage,
     EmployeeReportFaultFormPage,
-    SettingsPage
+    SettingsPage,
+    ReportedFaultsPage
   ],
   imports: [
     FormsModule,
@@ -67,7 +69,8 @@ export function createTranslateLoader(http: HttpClient) {
     ReportFaultHomePage,
     EmployeeLoginPage,
     EmployeeReportFaultFormPage,
-    SettingsPage
+    SettingsPage,
+    ReportedFaultsPage
   ],
   providers: [
     StatusBar,
