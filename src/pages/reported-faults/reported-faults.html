@@ -15,15 +15,20 @@
 
 <ion-content>
   <ion-list>
+    <button ion-item>
+      <ion-label><strong> Type</strong></ion-label>
+      <ion-label><strong>Reported Date</strong></ion-label>
+      <ion-label><strong>Status</strong></ion-label>
+    </button>
     <button
       ion-item
       *ngFor="let item of reportedFaultsList"
       (click)="itemTapped($event, item)"
     >
-      <ion-label>Fault Type: {{ item.faultType }}</ion-label>
-      <ion-label>Reported Date: {{ item.journeyTimeAndDate }}</ion-label>
+      <ion-label>{{ item.faultType }}</ion-label>
+      <ion-label>{{ item.journeyTimeAndDate }}</ion-label>
 
-      <div class="item-note" item-right>Status:{{ item.status }}</div>
+      <ion-label>{{ item.status }}</ion-label>
     </button>
   </ion-list>
 </ion-content>

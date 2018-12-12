@@ -6,7 +6,9 @@
 -->
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle style="color:red"><ion-icon name="menu"></ion-icon></button>
+    <button ion-button menuToggle style="color:red">
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Log In</ion-title>
   </ion-navbar>
 </ion-header>
@@ -55,7 +57,7 @@
         <button
           ion-button
           block
-          color="secondary"
+          color="danger"
           [disabled]="!credentialsForm.valid"
           type="submit"
         >
@@ -66,12 +68,12 @@
   </form>
   <ion-row>
     <ion-col text-center>
-      <button ion-button color="secondary" (click)="clear()">Clear</button>
+      <button ion-button color="danger" (click)="clear()">Clear</button>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col text-center>
-      <button ion-button color="secondary" (click)="onForgotPassword()">
+      <button ion-button color="danger" (click)="onForgotPassword()">
         Forgot your password?
       </button>
     </ion-col>

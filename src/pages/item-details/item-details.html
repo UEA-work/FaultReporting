@@ -8,11 +8,35 @@
 </ion-header>
 
 <ion-content>
-  <h3 text-center *ngIf="selectedItem">
-    {{ selectedItem.coachType }}
-    <ion-icon [name]="selectedItem.icon"></ion-icon>
-  </h3>
-  <h4 text-center *ngIf="selectedItem">
-    You navigated here from <b>{{ selectedItem.coachNumber }}</b>
-  </h4>
+  <h4>Fault Detail:</h4>
+  <ion-grid>
+    <ion-row>
+      <ion-col
+        ><ion-label><strong> Type:</strong></ion-label></ion-col
+      >
+      <ion-col>
+        <ion-label *ngIf="selectedItem">{{ selectedItem.faultType }}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-label><strong>Reported Date:</strong></ion-label></ion-col
+      >
+      <ion-col>
+        <ion-label *ngIf="selectedItem">{{
+          selectedItem.journeyTimeAndDate
+        }}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-label><strong>Status:</strong></ion-label></ion-col
+      >
+      <ion-col>
+        <ion-label *ngIf="selectedItem">{{ selectedItem.status }}</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
