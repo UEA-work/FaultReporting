@@ -48,7 +48,7 @@
           </select-searchable>
         </ion-item>
         <!-- /////////////Common Faults /////////////// -->
-        <ion-item *ngIf="category == 'Seat'">
+        <ion-item *ngIf="category == 'Seat' && faultType == 'Train'">
           <ion-label>Common Faults</ion-label>
           <select-searchable
             [formControl]="reportFaultForm.controls['commonFault']"
@@ -62,7 +62,7 @@
           </select-searchable>
         </ion-item>
 
-        <ion-item *ngIf="category == 'Window'">
+        <ion-item *ngIf="category == 'Window' && faultType == 'Train'">
           <ion-label>Common Faults</ion-label>
           <select-searchable
             [formControl]="reportFaultForm.controls['commonFault']"
@@ -76,7 +76,7 @@
           </select-searchable>
         </ion-item>
 
-        <ion-item *ngIf="commonFault == 'Toilet'">
+        <ion-item *ngIf="category == 'Toilet' && faultType == 'Train'">
           <ion-label>Common Faults</ion-label>
           <select-searchable
             item-content
@@ -116,7 +116,7 @@
         </ion-item>
 
         <!-- /////////////Journey Information////////////// -->
-        <ion-item>
+        <ion-item *ngIf="faultType == 'Train'">
           <ion-label>Journey Info.</ion-label>
           <select-searchable
             [formControl]="reportFaultForm.controls['journeyInfo']"
@@ -137,7 +137,7 @@
 
         <!-- /////////////Journey Time and Date /////////////// -->
 
-        <ion-item>
+        <ion-item *ngIf="faultType == 'Train'">
           <ion-label>Journey Time & Date</ion-label>
           <ion-datetime
             [formControl]="reportFaultForm.controls['journeyTimeAndDate']"
@@ -147,7 +147,7 @@
 
         <!-- ////////////Coach Information ///////////// -->
 
-        <ion-item>
+        <ion-item *ngIf="faultType == 'Train'">
           <ion-label>Coach Info.</ion-label>
           <select-searchable
             [formControl]="reportFaultForm.controls['coachInfo']"
@@ -162,7 +162,7 @@
         </ion-item>
 
         <!-- ////////////Seat number if coach type is urban//////////// -->
-        <ion-item *ngIf="coachType == 'urban'">
+        <ion-item *ngIf="coachType == 'urban' && faultType == 'Train'">
           <ion-label>Seat No.</ion-label>
           <ion-input
             [formControl]="reportFaultForm.controls['seatNumber']"
