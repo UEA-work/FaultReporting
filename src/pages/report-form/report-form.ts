@@ -10,12 +10,7 @@ import { HelloIonicPage } from "../hello-ionic/hello-ionic";
 import { Camera, CameraOptions } from "@ionic-native/camera";
 import { ReportFaultHomePage } from "../report-fault-home/report-fault-home";
 import { SelectSearchableComponent } from "ionic-select-searchable";
-import {
-  FormBuilder,
-  FormGroup,
-  FormControl,
-  Validators
-} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @IonicPage()
 @Component({
@@ -23,15 +18,26 @@ import {
   templateUrl: "report-form.html"
 })
 export class ReportFormPage {
-  reportForm: FormGroup;
+  reportFaultForm: FormGroup;
   faultPhoto: any;
   selectedCategoryType: any = null;
-  coachInfo: any = null;
-  coachType: any = null;
+  //coachInfo: any = null;
+
   selectedCommonFault: any = null;
-  commonFault: any = null;
+  // commonFault: any = null;
   faultForm: any = null;
   myDate: any = null;
+
+  faultType: any;
+  category: any;
+  commonFault: any;
+  description: any;
+  journeyInfo: any;
+  journeyTimeAndDate: any;
+  coachNumber: any;
+  coachType: any;
+  seatNumber: number;
+  email: any;
 
   @ViewChild("myselect") selectComponent: SelectSearchableComponent;
   selectedFaultType: any = null;
@@ -220,7 +226,19 @@ export class ReportFormPage {
     private camera: Camera,
     public navCtrl: NavController,
     public navParams: NavParams
-  ) {}
+  ) {
+    this.reportFaultForm = this.formBuilder.group({
+      faultType: ["", Validators.required],
+      category: ["", [Validators.required]],
+      commonFault: [""],
+      description: [""],
+      journeyInfo: ["", [Validators.required]],
+      journeyTimeAndDate: ["", [Validators.required]],
+      coachInfo: ["", [Validators.required]],
+      seatNumber: ["", [Validators.required]],
+      email: ["", [Validators.pattern(".+@.+..+")]]
+    });
+  }
 
   takePhoto() {
     const options: CameraOptions = {
@@ -243,36 +261,81 @@ export class ReportFormPage {
     );
   }
   checkCommonFault() {
-    this.commonFault = this.selectedCommonFault.commonFaultOption;
-    console.log(this.commonFault);
+    this.commonFault = this.reportFaultForm.controls.commonFault.value.commonFaultOption;
+
+    if (this.commonFault != "Other") {
+      this.description = null;
+    }
+    console.log("common fault " + this.commonFault);
   }
   selectedCoach() {
     console.log("in selectedCoach function ");
-    console.log(this.coachInfo);
-    this.coachType = this.coachInfo.coachType;
-    console.log("selected coach type is ", this.coachType);
-    console.log("Ft value", this.selectedFaultType);
-    console.log("selectedCategoryType value", this.selectedCategoryType);
+
+    this.coachType = this.reportFaultForm.controls.coachInfo.value.coachType;
   }
 
   selectedCategoryTrain() {
     console.log("in selectedCategory function ");
-    console.log(this.selectedCategoryType);
-    this.selectedCategoryType = this.selectedCategoryType.categoryOption;
-    console.log("selectedCategoryType value", this.selectedCategoryType);
+    // console.log(this.selectedCategoryType);
+    this.category = this.reportFaultForm.controls.category.value.categoryOption;
+    console.log("selectedCategoryType value", this.category);
   }
   selectedFault() {
-    this.selectedCategoryType = null;
-    console.log("in Selected Fault function ");
-    console.log(this.selectedFaultType);
-    this.selectedFaultType = this.selectedFaultType.faultType;
-    console.log("Ft value", this.selectedFaultType);
+    this.category = null;
+    this.faultType = this.reportFaultForm.controls.faultType.value.faultType;
+    console.log("Selected Fault type is ", this.faultType);
   }
 
   submit() {
-    this.myDate = this.myDate;
-    console.log("myDate" + this.myDate);
-    this.navCtrl.push(ReportFaultHomePage);
+    this.faultType = this.reportFaultForm.controls.faultType.value.faultType;
+    this.category = this.reportFaultForm.controls.category.value.categoryOption;
+    this.commonFault = this.reportFaultForm.controls.commonFault.value.commonFaultOption;
+    this.description = this.reportFaultForm.controls.description.value;
+    this.email = this.reportFaultForm.controls.email.value;
+    this.seatNumber = this.reportFaultForm.controls.seatNumber.value;
+    this.coachNumber = this.reportFaultForm.controls.coachInfo.value.coachNumber;
+    this.coachType = this.reportFaultForm.controls.coachInfo.value.coachType;
+    this.journeyTimeAndDate = this.reportFaultForm.controls.journeyTimeAndDate.value;
+    this.journeyInfo = this.reportFaultForm.controls.journeyInfo.value.journeyInfoOption;
+
+    console.log(
+      "in submit() FaultType " +
+        this.reportFaultForm.controls.faultType.value.faultType
+    );
+    console.log(
+      "in submit() category " +
+        this.reportFaultForm.controls.category.value.categoryOption
+    );
+    console.log(
+      "in submit() commonFaultValue " +
+        this.reportFaultForm.controls.commonFault.value.commonFaultOption
+    );
+
+    console.log(
+      "in submit() description " +
+        this.reportFaultForm.controls.description.value
+    );
+    console.log("in submit() this.journeyInfo" + this.journeyInfo);
+    console.log(
+      "in submit() journeyTimeAndDate " +
+        this.reportFaultForm.controls.journeyTimeAndDate.value
+    );
+    console.log(
+      "in submit() coachInfo " +
+        this.reportFaultForm.controls.coachInfo.value.coachNumber
+    );
+    console.log(
+      "in submit() coachInfo " +
+        this.reportFaultForm.controls.coachInfo.value.coachType
+    );
+    console.log(
+      "in submit() seatNumber " + this.reportFaultForm.controls.seatNumber.value
+    );
+    console.log(
+      "in submit() email " + this.reportFaultForm.controls.email.value
+    );
+
+    //this.navCtrl.push(ReportFaultHomePage);
   }
   cancel() {
     this.navCtrl.push(ReportFaultHomePage);
