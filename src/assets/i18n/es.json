@@ -1,4 +1,7 @@
 {
   "HELLO": "Hola",
-  "LOVE": "Amor"
+  "LOVE": "Amor",
+  "Welcome": "Bienvenido",
+  "Employee": "Empleado",
+  "Customer": "cliente"
 }

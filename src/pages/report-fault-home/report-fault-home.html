@@ -8,20 +8,20 @@
 <ion-content padding>
   <div id="divStyle">
       <p>
-         <strong> Welcome to <span id="greater">greater</span>anglia fault reporting application. You can report any fault you notice at the station and train.
+         <strong>{{ 'Welcome' | translate }}  to <span id="greater">greater</span>anglia fault reporting application. You can report any fault you notice at the station and train.
          </strong></p>
         <p>
          <strong>   If you are a <span id="greater">greater</span>anglia customer then press the button below.
          </strong>
         </p>
     <button (click)="reportFault()" ion-button color="danger">
-      Customer
+        {{ 'Customer' | translate }} 
     </button>
     <p>
       <strong>
       If you are a <span id="greater">greater</span>anglia employee then press the button below.
     </strong>
     </p>
-    <button (click)="login()" ion-button color="danger">Employee</button>
+    <button (click)="login()" ion-button color="danger">  {{ 'Employee' | translate }} </button>
   </div>
 </ion-content>

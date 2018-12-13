@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
-
+import { TranslateService } from "@ngx-translate/core";
+import { MyApp } from "../../app/app.component";
 /**
  * Generated class for the SettingsPage page.
  *
@@ -18,22 +19,38 @@ export class SettingsPage {
   languages = [
     {
       id: 0,
-      language: "English"
+      language: "English",
+      code: "en"
     },
     {
       id: 1,
-      language: "French"
+      language: "French",
+      code: "fr"
     },
     {
       id: 2,
-      language: "Germen"
+      language: "Spanish",
+      code: "es"
     }
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams,  public translate: TranslateService) {}
 
   setLanguage() {
     console.log("Choosen Language" + this.selectedLanguage.language);
+
+    
+
+    this.languages.forEach(element => {
+      
+       if(element.language == this.selectedLanguage.language) 
+       {
+        this.translate.setDefaultLang(element.code);
+        
+       }
+    });
+    this.navCtrl.push(MyApp);
+
   }
 
   ionViewDidLoad() {
