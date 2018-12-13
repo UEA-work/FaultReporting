@@ -21,8 +21,7 @@ import {
   templateUrl: "employee-login.html"
 })
 export class EmployeeLoginPage {
-  email: AbstractControl;
-  password: AbstractControl;
+ 
   credentialsForm: FormGroup;
 
   constructor(
@@ -31,17 +30,19 @@ export class EmployeeLoginPage {
     public navParams: NavParams
   ) {
     this.credentialsForm = this.formBuilder.group({
-      email: ["", [Validators.pattern(".+@.+..+"), Validators.required]],
-      password: ["", [Validators.required, Validators.minLength(8)]]
+      email: ['', [Validators.pattern(".+@.+..+"), Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
-  employeeLogin(formData: any): void {
+  employeeLogin(): void {
+    console.log('SignInPage: onSignIn()');
     if (this.credentialsForm.valid) {
-      console.log(" Email Id:", +formData.email.value);
-      console.log("employeeLogin() => inside IF statement ");
+
+       console.log("employeeLogin() => inside IF statement ");
     }
-    console.log("in employeeLogin() ");
+   
+    console.log("in employeeLogin() "+ this.credentialsForm.controls.email.value);
     this.navCtrl.setRoot(EmployeeReportFaultFormPage);
   }
   onForgotPassword() {}
