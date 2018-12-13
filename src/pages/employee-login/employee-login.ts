@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { EmployeeReportFaultFormPage } from "../employee-report-fault-form/employee-report-fault-form";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
+import { UserServiceProvider } from '../../providers/user-service/user-service';
 /**
  * Generated class for the EmployeeLoginPage page.
  *
@@ -21,7 +22,8 @@ export class EmployeeLoginPage {
   constructor(
     public navCtrl: NavController,
     private formBuilder: FormBuilder,
-    public navParams: NavParams
+    public navParams: NavParams,
+    private userService: UserServiceProvider
   ) {
     this.credentialsForm = this.formBuilder.group({
       email: ["", [Validators.pattern(".+@.+..+"), Validators.required]],
@@ -33,12 +35,23 @@ export class EmployeeLoginPage {
     console.log("SignInPage: onSignIn()");
     if (this.credentialsForm.valid) {
       console.log("employeeLogin() => inside IF statement ");
+
+      this.userService.logOn(this.credentialsForm.controls.email.value, this.credentialsForm.controls.password.value)
+      .then( returned => {
+        if (this.userService.success) {
+          this.navCtrl.setRoot(EmployeeReportFaultFormPage);
+        }
+        else {
+         // this.login.email = '';
+         // this.login.passWrd = '';  
+        }
+      })
     }
 
     console.log(
       "in employeeLogin() " + this.credentialsForm.controls.email.value
     );
-    this.navCtrl.setRoot(EmployeeReportFaultFormPage);
+   
   }
   onForgotPassword() {}
   clear() {

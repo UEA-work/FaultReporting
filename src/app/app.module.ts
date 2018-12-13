@@ -25,9 +25,22 @@ import { HttpClientModule, HttpClient } from "@angular/common/http";
 
 import { IonicStorageModule } from "@ionic/storage";
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { UserServiceProvider } from '../providers/user-service/user-service';
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyAtF_Ia0-uV49Sf2aM7qZ6zo23pcVX-xWs",
+  authDomain: "faultreporting-e676e.firebaseapp.com",
+  databaseURL: "https://faultreporting-e676e.firebaseio.com",
+  storageBucket: "faultreporting-e676e.appspot.com",
+  messagingSenderId: '642056724185' 
+};
 
 @NgModule({
   declarations: [
@@ -48,6 +61,9 @@ export function createTranslateLoader(http: HttpClient) {
     SelectSearchableModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -73,7 +89,8 @@ export function createTranslateLoader(http: HttpClient) {
     StatusBar,
     SplashScreen,
     Camera,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    UserServiceProvider
   ]
 })
 export class AppModule {}
