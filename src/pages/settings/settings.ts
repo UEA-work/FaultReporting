@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { TranslateService } from "@ngx-translate/core";
 import { MyApp } from "../../app/app.component";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 /**
  * Generated class for the SettingsPage page.
  *
@@ -15,6 +16,7 @@ import { MyApp } from "../../app/app.component";
   templateUrl: "settings.html"
 })
 export class SettingsPage {
+  settingsForm: FormGroup;
   selectedLanguage: any = null;
   languages = [
     {
@@ -34,27 +36,31 @@ export class SettingsPage {
     }
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,  public translate: TranslateService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, public translate: TranslateService) {
 
+    this.settingsForm = this.formBuilder.group({
+      selectedLanguage: [""]
+    });
     console.log("current Language" + this.translate.defaultLang);
 
     this.languages.forEach(element => {
       
       if(element.code == this.translate.defaultLang) 
       {
-   //     this.selectedLanguage.language = element.language;
+     //   this.settingsForm.controls.selectedLanguage = element;
+       this.selectedLanguage = this.settingsForm.controls.selectedLanguage.value.language;
       }
    });
   }
 
   setLanguage() {
-    console.log("Choosen Language" + this.selectedLanguage.language);
+    console.log("Choosen Language" + this.selectedLanguage);
 
-    
+    this.selectedLanguage = this.settingsForm.controls.selectedLanguage.value.language;
 
     this.languages.forEach(element => {
       
-       if(element.language == this.selectedLanguage.language) 
+       if(element.language == this.selectedLanguage) 
        {
         this.translate.use(element.code);
        

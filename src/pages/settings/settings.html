@@ -14,12 +14,15 @@
 </ion-header>
 
 <ion-content>
+    <form
+    [formGroup]="settingsForm"
+     
+    >
   <ion-item>
     <ion-label>Choose Language</ion-label>
     <select-searchable
       item-content
-      [ngModelOptions]="{ standalone: true }"
-      [(ngModel)]="selectedLanguage"
+      [formControl]="settingsForm.controls['selectedLanguage']"
       [items]="languages"
       itemValueField="id"
       itemTextField="language"
@@ -28,4 +31,5 @@
     >
     </select-searchable>
   </ion-item>
+  </form>
 </ion-content>
