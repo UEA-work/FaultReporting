@@ -11,6 +11,8 @@ import { Camera, CameraOptions } from "@ionic-native/camera";
 import { ReportFaultHomePage } from "../report-fault-home/report-fault-home";
 import { SelectSearchableComponent } from "ionic-select-searchable";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UserServiceProvider } from '../../providers/user-service/user-service';
+import { ReportedFaultsPage } from "../reported-faults/reported-faults";
 
 @IonicPage()
 @Component({
@@ -38,9 +40,27 @@ export class ReportFormPage {
   coachType: any;
   seatNumber: number;
   email: any;
+  stationName: any;
+  location: any;
 
   @ViewChild("myselect") selectComponent: SelectSearchableComponent;
   selectedFaultType: any = null;
+
+/*/////////////////////////////Station Names/////////////////////////////////// */
+stationNames = [
+  {
+    id: 0,
+    station: "Norwich"
+  },
+  {
+    id: 1,
+    station: "Ipswich"
+  },
+  {
+    id: 1,
+    station: "Diss"
+  }
+];
 
   /*/////////////////////////////FAULT TYPES/////////////////////////////////// */
   faultTypes = [
@@ -225,14 +245,17 @@ export class ReportFormPage {
     public formBuilder: FormBuilder,
     private camera: Camera,
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    private userService: UserServiceProvider
   ) {
     this.reportFaultForm = this.formBuilder.group({
       faultType: ["", Validators.required],
       category: ["", [Validators.required]],
       commonFault: [""],
       description: [""],
-      journeyInfo: ["", [Validators.required]],
+      stationName: [""],
+      location: [""],
+       journeyInfo: ["", [Validators.required]],
       journeyTimeAndDate: ["", [Validators.required]],
       coachInfo: ["", [Validators.required]],
       seatNumber: ["", [Validators.required]],
@@ -297,7 +320,39 @@ export class ReportFormPage {
     this.coachType = this.reportFaultForm.controls.coachInfo.value.coachType;
     this.journeyTimeAndDate = this.reportFaultForm.controls.journeyTimeAndDate.value;
     this.journeyInfo = this.reportFaultForm.controls.journeyInfo.value.journeyInfoOption;
+    this.stationName = this.reportFaultForm.controls.stationName.value.station;
+    this.location =  this.reportFaultForm.controls.stationName.value;
+    
+    //{
+      //     id: 5,
+      //     faultType: "Train",
+      //     category: "Seat",
+      //     commonFault: "Broken Seat",
+      //     journeyInfo: "Norwich to Ipswich",
+      //     journeyTimeAndDate: "2018-12-12",
+      //     coachNumber: 57416,
+      //     coachType: "Urban",
+      //     seatNumber: 23,
+      //     status: "Reported"
+      //   }
 
+    var  item = {
+
+           id: 9,
+          faultType: this.faultType,
+          category: this.category,
+          commonFault: this.commonFault,
+          journeyInfo:  this.journeyInfo,
+          journeyTimeAndDate: this.journeyTimeAndDate,
+          coachNumber: this.coachNumber,
+          coachType: this.coachType,
+          seatNumber: this.seatNumber,
+          status: "Reported"
+     }
+
+     this.userService.addToStorage(item);
+    
+     this.navCtrl.push(ReportFaultHomePage);
     console.log(
       "in submit() FaultType " +
         this.reportFaultForm.controls.faultType.value.faultType
@@ -335,6 +390,9 @@ export class ReportFormPage {
       "in submit() email " + this.reportFaultForm.controls.email.value
     );
 
+    console.log(
+      "in submit() station " + this.reportFaultForm.controls.stationName.value
+    );
     //this.navCtrl.push(ReportFaultHomePage);
   }
   cancel() {
@@ -342,6 +400,10 @@ export class ReportFormPage {
   }
   reset() {
     this.navCtrl.push(ReportFormPage);
+  }
+  
+  faultInfoAlert(value){
+    this.userService.displayAlert("Help",value);
   }
 
   ionViewDidLoad() {

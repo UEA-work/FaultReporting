@@ -129,4 +129,19 @@ export class UserServiceProvider {
         return err;
       });
   }
+
+  addToStorage(item){
+
+    
+    var reportedFaultsList;
+    this.storage.get("reportedfaults").then( res => {
+      reportedFaultsList = JSON.parse(res);
+      console.log("passed this stage");
+      reportedFaultsList.push(item);
+      console.log("passed push stage");
+      this.storage.set ("reportedfaults",JSON.stringify(reportedFaultsList));
+
+      this.displayAlert("Info", "New fault is successfully reported");
+    });
+  }
 }

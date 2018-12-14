@@ -1,10 +1,12 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle color="red">
+      <button ion-button menuToggle color="red">
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Report Form</ion-title>
+   
   </ion-navbar>
+ 
 </ion-header>
 
 <ion-content>
@@ -23,13 +25,8 @@
             (onChange)="selectedFault()"
           >
           </select-searchable>
-
-          <ion-icon
-            (click)="faultInfoAlert()"
-            name="information-circle"
-            item-right
-            style="color:red"
-          ></ion-icon>
+      
+         
         </ion-item>
 
         <!-- ///////////// FAULT TYPE TRAIN/ ////////////// -->
@@ -115,6 +112,29 @@
           </select-searchable>
         </ion-item>
 
+        <!-- /////////////////Fault Type Station /////////////////// -->
+
+        <ion-item *ngIf="faultType == 'Station'">
+            <ion-label>Station</ion-label>
+            <select-searchable
+              [formControl]="reportFaultForm.controls['stationName']"
+              item-content
+              [items]="stationNames"
+              itemValueField="id"
+              itemTextField="station"
+              [canSearch]="true"
+            >
+            </select-searchable>
+          </ion-item>
+
+          <ion-item *ngIf="faultType == 'Station'">
+              <ion-label>Location:</ion-label>
+              <ion-input
+                [formControl]="reportFaultForm.controls['location']"
+                type="text"
+              ></ion-input>
+            </ion-item>
+
         <!-- /////////////Journey Information////////////// -->
         <ion-item *ngIf="faultType == 'Train'">
           <ion-label>Journey Info.</ion-label>
@@ -127,12 +147,7 @@
             [canSearch]="true"
           >
           </select-searchable>
-          <ion-icon
-            (click)="faultInfoAlert()"
-            name="information-circle"
-            item-right
-            style="color:red"
-          ></ion-icon>
+      
         </ion-item>
 
         <!-- /////////////Journey Time and Date /////////////// -->

@@ -34,7 +34,18 @@ export class SettingsPage {
     }
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,  public translate: TranslateService) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams,  public translate: TranslateService) {
+
+    console.log("current Language" + this.translate.defaultLang);
+
+    this.languages.forEach(element => {
+      
+      if(element.code == this.translate.defaultLang) 
+      {
+   //     this.selectedLanguage.language = element.language;
+      }
+   });
+  }
 
   setLanguage() {
     console.log("Choosen Language" + this.selectedLanguage.language);
@@ -45,8 +56,8 @@ export class SettingsPage {
       
        if(element.language == this.selectedLanguage.language) 
        {
-        this.translate.setDefaultLang(element.code);
-        
+        this.translate.use(element.code);
+       
        }
     });
     this.navCtrl.push(MyApp);
